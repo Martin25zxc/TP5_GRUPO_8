@@ -122,21 +122,37 @@ public class PanelIngresoPeliculas extends PanelPeliculasBase {
 		add(btnAceptar, gbc_btnAceptar);
 	}
 	
+	private boolean ExisteEnModel(String nombre, Categoria categoria){
+		boolean exist = false;
+		int i = 0;
+		while(!exist && i < listModel.size()){
+			
+			Pelicula p = listModel.elementAt(i++);
+			exist =(p.getNombre().equals(nombre) && p.getCategoria().getNombre().equals(categoria.getNombre()));
+		}
+		
+		return exist;
+	}
+	
 	private void Agregar() {
 		String mensaje = "";
 		String nombreIngresado = txtNombre.getText();
 		Categoria categoriaSeleccionada = ((Categoria)this.cbGenero.getSelectedItem());
+		
 		if(nombreIngresado.isEmpty() )
 		{
 			mensaje += "Se debe completar el campo Nombre. ";
 		}
-		
+
 		if(categoriaSeleccionada == opcionSeleccionar )
 		{
 			mensaje += "Se debe seleccionar una opcion valida";
 		}
 		
-		// Validar que no este en la lista exista
+		if(mensaje.length() == 0 && ExisteEnModel(nombreIngresado, categoriaSeleccionada))
+		{
+			mensaje += "Ya se encuentra una pelicula cargada con ese nombre y categoria.";
+		}
 		
 		if(mensaje.length() == 0){
 			Pelicula pelicula = new Pelicula(nombreIngresado, categoriaSeleccionada);

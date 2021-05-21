@@ -47,7 +47,10 @@ public class Pelicula implements Comparable<Pelicula>{
 	
 	@Override
 	public int compareTo(Pelicula o) {
+		int val = this.nombre.compareTo(o.nombre);
+		if(val == 0)
+			val = this.categoria.nombre.compareTo(o.categoria.nombre);
 		
-		return this.nombre.compareTo(o.nombre);
+		return val;
 	}
 }
