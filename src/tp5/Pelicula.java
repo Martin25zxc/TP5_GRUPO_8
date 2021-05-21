@@ -1,6 +1,6 @@
 package tp5;
 
-public class Pelicula {
+public class Pelicula implements Comparable<Pelicula>{
 	private static int identity = 1;
 	
 	//Atributos
@@ -38,5 +38,16 @@ public class Pelicula {
 
 	public int getId() {
 		return id;
+	}
+
+	@Override
+	public String toString() {
+		return this.nombre + ". " + this.categoria.nombre + " (#"+ this.id + ")";
+	}
+	
+	@Override
+	public int compareTo(Pelicula o) {
+		
+		return this.nombre.compareTo(o.nombre);
 	}
 }

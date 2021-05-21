@@ -17,7 +17,7 @@ import javax.swing.border.EmptyBorder;
 public class Principal extends JFrame {
 
 	private static final long serialVersionUID = 6650411408176771737L;
-	private final Font defaultFont; 
+	private final Font fuenteComun; 
 	private JPanel contentPane;
 	private static DefaultListModel<Pelicula> listModel;
 
@@ -43,17 +43,17 @@ public class Principal extends JFrame {
 		setTitle("Programa");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 650, 500);
-		defaultFont = new Font("Segoe UI", Font.PLAIN, 18);
+		fuenteComun = new Font("Segoe UI", Font.PLAIN, 18);
 				
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 		
 		JMenu menu = new JMenu("Películas");
-		menu.setFont(defaultFont);
+		menu.setFont(fuenteComun);
 		menuBar.add(menu);
 		
 		JMenuItem menuItemAgregar = new JMenuItem("Agregar");
-		menuItemAgregar.setFont(defaultFont);
+		menuItemAgregar.setFont(fuenteComun);
 		menuItemAgregar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				AbrirPanel(new PanelIngresoPeliculas());
@@ -62,7 +62,7 @@ public class Principal extends JFrame {
 		menu.add(menuItemAgregar);
 		
 		JMenuItem menuItemListado = new JMenuItem("Listar");
-		menuItemListado.setFont(defaultFont);
+		menuItemListado.setFont(fuenteComun);
 		menuItemListado.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				AbrirPanel(new PanelListadoPeliculas());
